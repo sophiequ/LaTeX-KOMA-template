@@ -18,3 +18,6 @@ main.lof
 main.tdo
 *.synctex.gz
 template/blind*
+*.sublime-*
+*.fdb_latexmk
+/Template-Documentation.pdf
