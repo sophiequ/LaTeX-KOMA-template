@@ -532,17 +532,24 @@
 %doc% \end{itemize}
 %doc% 
 %doc% 
-\usepackage[backend=biber, %% using "biber" to compile references (instead of "biblatex")
-style=\THS@biblatexstyle, %% see biblatex documentation
-%style=alphabetic, %% see biblatex documentation
-dashed=\THS@biblatexdashed, %% do *not* replace recurring reference authors with a dash
-backref=\THS@biblatexbackref, %% create backlings from references to citations
-natbib=true, %% offering natbib-compatible commands
-hyperref=true, %% using hyperref-package references
-]{biblatex}  %% remove, if using BibTeX instead of biblatex
 
-\addbibresource{\THS@biblatexfile} %% remove, if using BibTeX instead of biblatex
+\ifthenelse{\boolean{THSusebiblatex}}{
+	\RequirePackage[backend=biber, %% using "biber" to compile references (instead of "biblatex")
+	style=\THS@biblatexstyle, %% see biblatex documentation
+	%style=alphabetic, %% see biblatex documentation
+	dashed=\THS@biblatexdashed, %% do *not* replace recurring reference authors with a dash
+	backref=\THS@biblatexbackref, %% create backlings from references to citations
+	natbib=true, %% offering natbib-compatible commands
+	hyperref=true, %% using hyperref-package references
+	]{biblatex}  %% remove, if using BibTeX instead of biblatex
 
+	\addbibresource{\THS@bibfile} %% remove, if using BibTeX instead of biblatex
+}{
+	% just a quick hack in order to compile the template text correctly
+	\let\textcite\cite
+	\let\footcite\cite
+	\let\citeauthor\cite
+}
 
 
 %doc% 
