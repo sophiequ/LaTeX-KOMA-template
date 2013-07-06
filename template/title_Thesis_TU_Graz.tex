@@ -29,47 +29,47 @@
 ~
 \vfill\vfill\vfill
 
-\myauthor
+\THSinsertauthor
 
 \vfill
 
-{\LARGE\bfseries\mytitle}
+{\LARGE\bfseries\THSinserttitle}
 
 \vfill\vfill\vfill
 
-{\bfseries\myworktitle}
+{\bfseries\THSinsertworktitle}
 
 \vfill\vfill\vfill
 \vfill\vfill\vfill
 \vfill\vfill\vfill
 
-\myuniversity
+\THSinsertuniversity
 
 \vfill
 
-\myinstitute\\
-Head: \myinstitutehead\\
+\THSinsertinstitute\\
+Head: \THSinsertinstitutehead\\
 
 \vfill
 
-Supervisor: \mysupervisor\\
-%usually not mentioned on titlepage:% Evaluator: \myevaluator
+Supervisor: \THSinsertsupervisor\\
+%usually not mentioned on titlepage:% Evaluator: \THSinsertevaluator
 
 \vfill
 
-\mysubmissiontown, \mysubmissionmonth~\mysubmissionyear
+\THSinsertsubmissiontown, \THSinsertsubmissionmonth~\THSinsertsubmissionyear
 
 \end{center}
 \end{titlepage}
 
 %% if myaddcolophon is set to "true", colophon is added:
-\ifthenelse{\boolean{myaddcolophon}}{
+\ifthenelse{\boolean{THSaddcolophon}}{
   \newpage
   \thispagestyle{empty}  %% no page header or footer
 
   ~
   \vfill
-  % \mycolophon
+  \THSinsertcolophon
 }{}
 \newpage
 

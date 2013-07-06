@@ -14,41 +14,41 @@
 
 \begin{center}
 
-{\LARGE\bfseries\mytitle}
+{\LARGE\bfseries\THSinserttitle}
 
 \vfill
 
 Vorwissenschaftliche Arbeit verfasst von\\[5mm]
-{\Large\bfseries\myauthor}\\[5mm]
-Klasse \mystudy\\[50mm]
+{\Large\bfseries\THSinsertauthor}\\[5mm]
+Klasse \THSinsertstudy\\[50mm]
 
 \vfill
 
 \includegraphics[width=3cm]{figures/institution}\\[5mm]
 
-Betreuer: \mysupervisor
+Betreuer: \THSinsertsupervisor
 
 \vfill
 
-\myinstitute\\
-\myhomestreet\\
-\myhomepostalnumber~\myhometown
+\THSinsertinstitute\\
+\THSinserthomestreet\\
+\THSinserthomepostalnumber~\THSinserthometown
 
 \vfill
 
-\mysubmissiontown, \mysubmissionmonth~\mysubmissionyear
+\THSinsertsubmissiontown, \THSinsertsubmissionmonth~\THSinsertsubmissionyear
 \end{center}
 \normalsize %% new page, reset font size
 \newpage
 
 %% if myaddcolophon is set to "true", colophon is added:
-\ifthenelse{\boolean{myaddcolophon}}{
+\ifthenelse{\boolean{THSaddcolophon}}{
   \newpage
   \thispagestyle{empty}  %% no page header or footer
 
   ~
   \vfill
-  \mycolophon
+  \THSinsertcolophon
 }{}
 \newpage
 

@@ -7,98 +7,91 @@
 %%
 %%      Karl Voit
 %%
-% \documentclass{scrbook}
 
 \documentclass[
 	papersize=A4,
-	% 	%% e.g., "A4", "letter", "legal", "executive", ...
-	% 	%% The size of the paper of the resulting PDF file.	
+		%% e.g., "A4", "letter", "legal", "executive", ...
+		%% The size of the paper of the resulting PDF file.	
 	fontsize=12pt,
-	% 	%% e.g., 10pt, 11pt, 12pt
-	% 	%% The font size of the main text in pt (points).
+	 	%% e.g., 10pt, 11pt, 12pt
+	 	%% The font size of the main text in pt (points).
 	laterality=twoside, 
-	% 	%% "oneside" or "twoside"
-	% 	%% Either you are creating a document which is printed on both, left pages
-	% 	%% and right pages (twoside) or you create a document which is printed
-	% 	%% on right pages only (oneside).
+	 	%% "oneside" or "twoside"
+	 	%% Either you are creating a document which is printed on both, left pages
+	 	%% and right pages (twoside) or you create a document which is printed
+	 	%% on right pages only (oneside).
 	draft=false,
-	% 	%% "true" or "false"
-	% 	%% Use draft mode? If true, included graphics are replaced by empty
-	% 	%% rectangles (of same size) and overfull boxes (in margin space) are
-	% 	%% marked with black box (-> easy to spot!)
+	 	%% "true" or "false"
+	 	%% Use draft mode? If true, included graphics are replaced by empty
+	 	%% rectangles (of same size) and overfull boxes (in margin space) are
+	 	%% marked with black box (-> easy to spot!)
 	parskip=half,
-	% 	%% e.g., "no", "full", "half", ...
-	% 	%% How to separate paragraphs: indention ("no") or spacing ("half",
-	% 	%% "full", ...).
+	 	%% e.g., "no", "full", "half", ...
+	 	%% How to separate paragraphs: indention ("no") or spacing ("half",
+	 	%% "full", ...).
 	BCOR=0mm,
-	% 	%% Inner binding correction. This value depends on the method which is
-	% 	%% being used to bind your printed result. Some techniques do not
-	% 	%% require a binding correction at all ("0mm"), other require for
-	% 	%% example "5mm". Refer to KOMA script documentation for a detailed
-	% 	%% explanation what a binding correction is and how to measure it.
+	 	%% Inner binding correction. This value depends on the method which is
+	 	%% being used to bind your printed result. Some techniques do not
+	 	%% require a binding correction at all ("0mm"), other require for
+	 	%% example "5mm". Refer to KOMA script documentation for a detailed
+	 	%% explanation what a binding correction is and how to measure it.
 	fontsize=12pt,
-	% 	%% e.g., 10pt, 11pt, 12pt
-	% 	%% The font size of the main text in pt (points).
+	 	%% e.g., 10pt, 11pt, 12pt
+	 	%% The font size of the main text in pt (points).
 	linespread=1.0,
-	% 	%% e.g., 1.0, 1.5, 2.0
-	% 	%% Line spacing in %/100. For example 1.5 means 150% of the usual line
-	% 	%% spacing. Please use with caution: 100% ("1.0") is fine because the
-	% 	%% font was designed for it.
-	language= {ngerman,american},
-	% 	%% "english,ngerman", "ngerman,english", ...
-	% 	%% NOTE: The *last* language is the active one!
-	% 	%% See babel documentation for further details.
+	 	%% e.g., 1.0, 1.5, 2.0
+	 	%% Line spacing in %/100. For example 1.5 means 150% of the usual line
+	 	%% spacing. Please use with caution: 100% ("1.0") is fine because the
+	 	%% font was designed for it.
+	language={ngerman,american},
+	 	%% "english,ngerman", "ngerman,english", ...
+	 	%% NOTE: The *last* language is the active one!
+	 	%% See babel documentation for further details.
 	biblatexstyle=authoryear,
-	% 	%% BibLaTeX-settings: (see biblatex reference for further description)
-	% 	%% e.g., "alphabetic", "authoryear", ...
-	% 	%% The biblatex style which is being used for referencing. See
-	% 	%% biblatex documentation for further details and more values.
-	% 	%%
-	% 	%% CAUTION: if you change the style, please check for (in)compatible
-	% 	%%          "biblatex" package options in the file
-	% 	%%          "template/preamble.tex"! For example: "alphabetic" does
-	% 	%%          not have an option "dashed=..." and causes an error if it
-	% 	%%          does not get removed from the list of options.
+	 	%% BibLaTeX-settings: (see biblatex reference for further description)
+	 	%% e.g., "alphabetic", "authoryear", ...
+	 	%% The biblatex style which is being used for referencing. See
+	 	%% biblatex documentation for further details and more values.
+	 	%%
+	 	%% CAUTION: if you change the style, please check for (in)compatible
+	 	%%          "biblatex" package options in the file
+	 	%%          "template/preamble.tex"! For example: "alphabetic" does
+	 	%%          not have an option "dashed=..." and causes an error if it
+	 	%%          does not get removed from the list of options.
 	biblatexdashed=false,  %% "true" or "false"
-	% 	%% If true: replace recurring reference authors with a dash.
+	 	%% If true: replace recurring reference authors with a dash.
 	biblatexbackref=true,  %% "true" or "false"
-	% 	%% If true: create backward links from reference to citations.
+	 	%% If true: create backward links from reference to citations.
 	biblatexfile=references-biblatex.bib,
-	% 	%% Name of the biblatex file that holds the references.
-	% dispositioncolor= {30,103,182},
-	% 	%% e.g., "30,103,182" (blue/turquois), "0,0,0" (black), ...
-	% 	%% Color of the headings and so forth in RGB (red,green,blue) values.
+	 	%% Name of the biblatex file that holds the references.
+	dispositioncolor={30,103,182},
+	 	%% e.g., "30,103,182" (blue/turquois), "0,0,0" (black), ...
+	 	%% Color of the headings and so forth in RGB (red,green,blue) values.
 	colorlinks=true, %% "true" or "false"
-	% 	%% Enables or disables colored links (hyperref package).
+	 	%% Enables or disables colored links (hyperref package).
 	titlepage=Thesis_TU_Graz,
-	% 	%% Your own or one of following pre-defined title pages:
-	% 	%% "template/title_plain_maketitle": simple maketitle page
-	% 	%% "template/title_Diplomarbeit_KF_Uni_Graz.tex": fancy (german) title page for KF Uni Graz
-	% 	%% "template/title_Thesis_TU_Graz": titlepage for Graz University of Technology (correct Corporate Design)
-	% 	%% "template/title_VWA": titlepage for Vorwissenschaftliche Arbeit
-	% todonotesoptions={},
-	% 	%% e.g., "" (empty), "disable", ...
-	% 	%% Options for the todonotes-package. If "disable", all todonotes will
-	% 	%% be hidden (including listoftodos).
-]{thesis}
-
-
-
-
-%% Load main settings for document preamble:
-% \input{template/preamble}%% DO NOT REMOVE THIS LINE!
-
-\setboolean{myaddcolophon}{true}  %% "true" or "false"
-%% If set to "true": a colophon (with notes about this document
-%% template, LaTeX, ...) is added after the title page.
-%% Please do not set to "false" without a good reason. The colophon
-%% helps your readers to get in touch with LaTeX and to find this template.
-
-\setboolean{myaddlistoftodos}{false}  %% "true" or "false"
-%% If set to "true": the current list of open todos is added after the
-%% table of contents. If \mytodonotesoptions is set to "disable", no
-%% list of todos is added, independent of this setting here.
-
+	% titlepage=Diplomarbeit_KF_Uni_Graz,
+	% titlepage=plain_maketitle,
+	% titlepage=VWA,
+	 	%% Your own or one of following pre-defined title pages:
+	 	%% plain_maketitle: simple maketitle page
+	 	%% Diplomarbeit_KF_Uni_Graz: fancy (german) title page for KF Uni Graz
+	 	%% Thesis_TU_Graz: titlepage for Graz University of Technology (correct Corporate Design)
+	 	%% VWA: titlepage for Vorwissenschaftliche Arbeit
+	todonotesoptions={},
+	 	%% e.g., "" (empty), "disable", ...
+	 	%% Options for the todonotes-package. If "disable", all todonotes will
+	 	%% be hidden (including listoftodos).
+	addcolophon=true, %% "true" or "false"
+		%% If set to "true": a colophon (with notes about this document
+		%% template, LaTeX, ...) is added after the title page.
+		%% Please do not set to "false" without a good reason. The colophon
+		%% helps your readers to get in touch with LaTeX and to find this template.
+	addlistoftodos=false, %% "true" or "false"
+		%% If set to "true": the current list of open todos is added after the
+		%% table of contents. If \mytodonotesoptions is set to "disable", no
+		%% list of todos is added, independent of this setting here.
+]{tugthesis}
 
 
 %% ========================================================================
@@ -106,31 +99,30 @@
 %% ========================================================================
 
 %% general metadata:
-\newcommand{\myauthor}{AUTHOR}  %% also used for PDF metadata (hyperref)
-\newcommand{\mytitle}{TITLE}  %% also used for PDF metadata (hyperref)
-\newcommand{\mysubject}{SUBJECT}  %% also used for PDF metadata (hyperref)
-\newcommand{\mykeywords}{KEYWORDS}  %% also used for PDF metadata (hyperref)
+\THSauthor{AUTHOR}  %% also used for PDF metadata (hyperref)
+\THStitle{TITLE}  %% also used for PDF metadata (hyperref)
+\THSsubject{SUBJECT}  %% also used for PDF metadata (hyperref)
+\THSkeywords{KEYWORDS}  %% also used for PDF metadata (hyperref)
 
 %% this information is used only for generating the title page:
-\newcommand{\myworktitle}{Master's Thesis}  %% official type of work like ``Master theses''
-\newcommand{\mygrade}{Master of Science} %% title you are getting with this work like ``Master of ...''
-\newcommand{\mystudy}{Telematik} %% your study like ``Arts''
-\newcommand{\myuniversity}{Graz University of Technology} %% your university/school
-\newcommand{\myinstitute}{Institute for Softwaretechnology} %% affiliation
-\newcommand{\myinstitutehead}{Univ.-Prof.\,Dipl-Ing.\,Dr.techn.~Some One} %% head of institute
-\newcommand{\mysupervisor}{Dr.~Some Body} %% your supervisor
-\newcommand{\myevaluator}{Prof.~Some Genius} %% your evaluator
-\newcommand{\myhomestreet}{Street~42} %% your home street (with house number)
-\newcommand{\myhometown}{Graz} %% your home town
-\newcommand{\myhomepostalnumber}{8010} %% your postal number of home town
-\newcommand{\mysubmissionmonth}{November} %% month you are handing in
-\newcommand{\mysubmissionyear}{2013} %% year you are handing in
-\newcommand{\mysubmissiontown}{\myhometown} %% town of handing in (or \myhometown)
+\THSworktitle{Master's Thesis}  %% official type of work like ``Master theses''
+\THSgrade{Master of Science} %% title you are getting with this work like ``Master of ...''
+\THSstudy{Telematik} %% your study like ``Arts''
+\THSuniversity{Graz University of Technology} %% your university/school
+\THSinstitute{Institute for Softwaretechnology} %% affiliation
+\THSinstitutehead{Univ.-Prof.\,Dipl-Ing.\,Dr.techn.~Some One} %% head of institute
+\THSsupervisor{Dr.~Some Body} %% your supervisor
+\THSevaluator{Prof.~Some Genius} %% your evaluator
+\THShomestreet{Street~42} %% your home street (with house number)
+\THShometown{Graz} %% your home town
+\THShomepostalnumber{8010} %% your postal number of home town
+\THSsubmissionmonth{November} %% month you are handing in
+\THSsubmissionyear{2013} %% year you are handing in
+\THSsubmissiontown{\THShometown} %% town of handing in (or \myhometown)
 
 %% additional information for generic_documentation title page
-\newcommand{\myid}{1234567} %% Matrikelnummer
-\newcommand{\mylecture}{LECTURE} %% 
-
+\THSid{1234567} %% Matrikelnummer
+\THSlecture{LECTURE} %% 
 
 
 
@@ -148,8 +140,6 @@
 %% ========================================================================
 
 %% ... it's OK to put here your own newcommand/newenvironment-definitions ...
-
-
 
 
 
@@ -176,12 +166,10 @@
 %% acronyms in small caps: \myacro{UNESCO}
 
 
-% \input{template/pdf_settings}  %% should be *last* definitions in preamble!
 %% ========================================================================
 %%%% begin{document}
 %% ========================================================================
 \begin{document}
-
 
 
 \input{example-short-chapter}   %% remove this line to get rid of the example chapter
@@ -198,9 +186,7 @@
 \addpart*{Appendix}             %% adding Appendix to tableofcontents
 
 \printbibliography              %% remove, if using BibTeX instead of biblatex
-% \include{further_ressources}  %% this is a suggestion: you have to create this file on demand
-
-
+% \include{further_resources}  %% this is a suggestion: you have to create this file on demand
 
 
 

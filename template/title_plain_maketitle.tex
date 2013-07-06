@@ -12,19 +12,19 @@
 %% this is a very simple title page using LaTeX maketitle
 
 %% if myaddcolophon is set to "true", colophon is added:
-\ifthenelse{\boolean{myaddcolophon}}{
+\ifthenelse{\boolean{THSaddcolophon}}{
   \lowertitleback{
-    \mycolophon
+    \THSinsertcolophon
   }%% end lowertitleback
 }{}
 
 \title{%%
 ~\hfill\includegraphics[width=3cm]{figures/institution}\\[5mm] %% a logo at the upper right corner
-\mytitle}
+\THSinserttitle}
 
-\subtitle{\mysubject}
+\subtitle{\THSinsertsubject}
 
-\author{\myauthor
+\author{\THSinsertauthor
   \thanks{\href{http://LaTeX.TUGraz.at}{http://LaTeX.TUGraz.at}}\\
     \date{\today}
 }

@@ -30,13 +30,14 @@
 
 \pdfcompresslevel=9
 
-\usepackage[%
-pdftitle={\mytitle}, %
-pdfauthor={\myauthor}, %
-pdfsubject={\mysubject}, %
+
+\PassOptionsToPackage{%
+pdftitle={\THSinserttitle}, %
+pdfauthor={\THSinsertauthor}, %
+pdfsubject={\THSinsertsubject}, %
 pdfcreator={Accomplished with: pdfLaTeX, biber, and hyperref-package. No anmimals, MS-EULA or BSA-rules were harmed.},
-pdfproducer={\myauthor},
-pdfkeywords={\mykeywords},
+pdfproducer={\THSinsertauthor},
+pdfkeywords={\THSinsertkeywords},
 %a4paper=true, %
 pdftex=true, %
 backref, %
@@ -51,9 +52,11 @@ linkcolor=DispositionColor, %%
 pagecolor=DispositionColor, %%
 citecolor=DispositionColor, %%
 anchorcolor=DispositionColor, %%
-colorlinks=\mycolorlinks, % turn on/off colored links (on: better for
+colorlinks=\THScolorlinks, % turn on/off colored links (on: better for
                           % on-screen reading; off: better for printout versions)
-]{hyperref}
+}{hyperref}
+
+\RequirePackage{hyperref}
 
 %\DeclareGraphicsExtensions{.pdf}
 
