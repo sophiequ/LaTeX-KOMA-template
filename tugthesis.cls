@@ -23,15 +23,19 @@
 \DeclareStringOption[authoryear]{biblatexstyle}
 \DeclareStringOption[false]{biblatexdashed}
 \DeclareStringOption[true]{biblatexbackref}
-\DeclareStringOption[references-biblatex.bib]{biblatexfile}
+\DeclareStringOption[references-biblatex.bib]{bibfile}
 \DeclareStringOption[{30,103,182}]{dispositioncolor}
 \DeclareStringOption[true]{colorlinks}
 \DeclareStringOption[Thesis_TU_Graz]{titlepage}
 \DeclareStringOption{todonotesoptions}
+\DeclareStringOption[alpha]{bibtexstyle}
 \DeclareBoolOption[true]{addcolophon}
 \DeclareBoolOption[false]{addlistoftodos}
+\DeclareBoolOption{biblatex}
+\DeclareComplementaryOption{bibtex}{biblatex}
 
 \newboolean{THSaddcolophon}
+\newboolean{THSusebiblatex}
 
 % This section removes all known options from the @classoptionslist 
 % passed on to other loaded packages and classes, which might have 
@@ -47,6 +51,7 @@
 
 
 \PassOptionsToClass{
+	fontsize=\THS@fontsize, %% size of the main text
 	paper=\THS@papersize,  %% paper format
 	parskip=\THS@parskip,  %% vertical space between paragraphs (instead of indenting first par-line)
 	DIV=calc,            %% calculates a good DIV value for type area; 66 characters/line is great
@@ -67,7 +72,8 @@
 
 
 \def\THScolorlinks{\THS@colorlinks}
-
+\def\THSbibfile{\THS@bibfile}
+\def\THSbibtexstyle{\THS@bibtexstyle}
 
 %\ifTHS@draft
 %	\def\THS@draft{true}
@@ -81,6 +87,11 @@
 	\setboolean{THSaddcolophon}{false}
 \fi
 
+\ifTHS@biblatex
+	\setboolean{THSusebiblatex}{true}
+\else
+	\setboolean{THSusebiblatex}{false}
+\fi
 
 \def\THSinsertauthor{AUTHOR}
 \newcommand{\THSauthor}[1]{\def\THSinsertauthor{#1}}
@@ -144,6 +155,15 @@
 
 
 \input{template/preamble.tex}
+
+\newcommand{\THSinsertbibliography}{
+		\ifthenelse{\boolean{THSusebiblatex}}{
+		\printbibliography              %% remove, if using BibTeX instead of biblatex
+	}{
+		\bibliographystyle{\THSbibtexstyle}
+		\bibliography{\THSbibfile}
+	}
+}
 
 
 %% ========================================================================

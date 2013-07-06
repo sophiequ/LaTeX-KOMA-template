@@ -47,6 +47,14 @@
 	 	%% "english,ngerman", "ngerman,english", ...
 	 	%% NOTE: The *last* language is the active one!
 	 	%% See babel documentation for further details.
+	biblatex, % use biblatex
+	% bibtex % use bibtex
+		%% Choose the bibliography system you want to use, either 
+		%% "biblatex" or "bibtex". Note that you also have to change the 
+		%% bibfile below to reflect the correct one. 
+	bibfile=references-biblatex.bib,
+	% bibfile=references-bibtex.bib,
+	 	%% Name of the biblatex file that holds the references.
 	biblatexstyle=authoryear,
 	 	%% BibLaTeX-settings: (see biblatex reference for further description)
 	 	%% e.g., "alphabetic", "authoryear", ...
@@ -62,8 +70,8 @@
 	 	%% If true: replace recurring reference authors with a dash.
 	biblatexbackref=true,  %% "true" or "false"
 	 	%% If true: create backward links from reference to citations.
-	biblatexfile=references-biblatex.bib,
-	 	%% Name of the biblatex file that holds the references.
+	bibtexstyle=alpha, 
+		%% bibtex style to use, e.g. "alpha", "plain", "authordate1", ...
 	dispositioncolor={30,103,182},
 	 	%% e.g., "30,103,182" (blue/turquois), "0,0,0" (black), ...
 	 	%% Color of the headings and so forth in RGB (red,green,blue) values.
@@ -185,7 +193,9 @@
 \appendix                       %% closes main document, appendix follows until end; only available in book-classes
 \addpart*{Appendix}             %% adding Appendix to tableofcontents
 
-\printbibliography              %% remove, if using BibTeX instead of biblatex
+
+\THSinsertbibliography
+
 % \include{further_resources}  %% this is a suggestion: you have to create this file on demand
 
 
