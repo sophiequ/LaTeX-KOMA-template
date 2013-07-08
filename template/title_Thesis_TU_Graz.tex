@@ -10,6 +10,7 @@
 %% this title page fulfills the requirements of the corporate design
 %% of Graz University of Technology (correct placement of logo)
 
+
 \begin{titlepage}
 
 %\large  %% basic font size of the titlepage
@@ -48,16 +49,29 @@
 \vfill
 
 \THSinsertinstitute\\
+\ifx\THSinsertinstitutehead\empty\else
 Head: \THSinsertinstitutehead\\
+\fi
 
 \vfill
 
-Supervisor: \THSinsertsupervisor\\
+\ifx\THSinsertsupervisor\empty\else
+  Supervisor: \THSinsertsupervisor\\
+\fi
 %usually not mentioned on titlepage:% Evaluator: \THSinsertevaluator
+\ifx\THSinsertcosupervisor\empty\else
+	Co-Supervisor: \THSinsertcosupervisor\\
+\fi
 
 \vfill
 
-\THSinsertsubmissiontown, \THSinsertsubmissionmonth~\THSinsertsubmissionyear
+\ifx\THSinsertsubmissiontown\empty\else
+\THSinsertsubmissiontown,~%
+\fi
+\ifx\THSinsertsubmissionmonth\empty\else
+\THSinsertsubmissionmonth~%
+\fi
+\THSinsertsubmissionyear
 
 \end{center}
 \end{titlepage}

@@ -6,6 +6,7 @@
 \RequirePackage{ifpdf}
 \RequirePackage{kvoptions}
 \RequirePackage{ifthen}
+\RequirePackage{xifthen}
 
 \SetupKeyvalOptions{
 	family=THS,
@@ -93,64 +94,67 @@
 	\setboolean{THSusebiblatex}{false}
 \fi
 
-\def\THSinsertauthor{AUTHOR}
+\def\THSinsertauthor{}
 \newcommand{\THSauthor}[1]{\def\THSinsertauthor{#1}}
 
-\def\THSinserttitle{TITLE}
+\def\THSinserttitle{}
 \newcommand{\THStitle}[1]{\def\THSinserttitle{#1}}
 
-\def\THSinsertsubject{subject}
+\def\THSinsertsubject{}
 \newcommand{\THSsubject}[1]{\def\THSinsertsubject{#1}}
 
-\def\THSinsertkeywords{keywords}
+\def\THSinsertkeywords{}
 \newcommand{\THSkeywords}[1]{\def\THSinsertkeywords{#1}}
 
-\def\THSinsertworktitle{worktitle}
+\def\THSinsertworktitle{}
 \newcommand{\THSworktitle}[1]{\def\THSinsertworktitle{#1}}
 
-\def\THSinsertgrade{grade}
+\def\THSinsertgrade{}
 \newcommand{\THSgrade}[1]{\def\THSinsertgrade{#1}}
 
-\def\THSinsertstudy{study}
+\def\THSinsertstudy{}
 \newcommand{\THSstudy}[1]{\def\THSinsertstudy{#1}}
 
-\def\THSinsertuniversity{university}
+\def\THSinsertuniversity{}
 \newcommand{\THSuniversity}[1]{\def\THSinsertuniversity{#1}}
 
-\def\THSinsertinstitute{institute}
+\def\THSinsertinstitute{}
 \newcommand{\THSinstitute}[1]{\def\THSinsertinstitute{#1}}
 
-\def\THSinsertinstitutehead{institutehead}
+\def\THSinsertinstitutehead{}
 \newcommand{\THSinstitutehead}[1]{\def\THSinsertinstitutehead{#1}}
 
-\def\THSinsertsupervisor{supervisor}
+\def\THSinsertsupervisor{}
 \newcommand{\THSsupervisor}[1]{\def\THSinsertsupervisor{#1}}
 
-\def\THSinsertevaluator{evaluator}
+\def\THSinsertcosupervisor{}
+\newcommand{\THScosupervisor}[1]{\def\THSinsertcosupervisor{#1}}
+
+\def\THSinsertevaluator{}
 \newcommand{\THSevaluator}[1]{\def\THSinsertevaluator{#1}}
 
-\def\THSinserthomestreet{homestreet}
+\def\THSinserthomestreet{}
 \newcommand{\THShomestreet}[1]{\def\THSinserthomestreet{#1}}
 
-\def\THSinserthometown{hometown}
+\def\THSinserthometown{}
 \newcommand{\THShometown}[1]{\def\THSinserthometown{#1}}
 
-\def\THSinserthomepostalnumber{homepostalnumber}
+\def\THSinserthomepostalnumber{}
 \newcommand{\THShomepostalnumber}[1]{\def\THSinserthomepostalnumber{#1}}
 
-\def\THSinsertsubmissionmonth{submissionmonth}
+\def\THSinsertsubmissionmonth{}
 \newcommand{\THSsubmissionmonth}[1]{\def\THSinsertsubmissionmonth{#1}}
 
-\def\THSinsertsubmissionyear{submissionyear}
+\def\THSinsertsubmissionyear{}
 \newcommand{\THSsubmissionyear}[1]{\def\THSinsertsubmissionyear{#1}}
 
-\def\THSinsertsubmissiontown{submissiontown}
+\def\THSinsertsubmissiontown{}
 \newcommand{\THSsubmissiontown}[1]{\def\THSinsertsubmissiontown{#1}}
 
-\def\THSinsertid{id}
+\def\THSinsertid{}
 \newcommand{\THSid}[1]{\def\THSinsertid{#1}}
 
-\def\THSinsertlecture{lecture}
+\def\THSinsertlecture{}
 \newcommand{\THSlecture}[1]{\def\THSinsertlecture{#1}}
 
 
