@@ -1,0 +1,334 @@
+% \documentclass[12pt,paper=a4,parskip=half,DIV=calc,oneside,%%
+% headinclude,footinclude=false,open=right,bibliography=totoc]{scrartcl}
+% \makeatletter
+% \newcommand{\THS@linespread}{1.0}  \newcommand{\THScolorlinks}{true}
+% \usepackage[utf8]{inputenc}\usepackage[ngerman,american]{babel}\usepackage{scrpage2}
+% \usepackage{ifthen}\usepackage{eurosym}\usepackage{xspace}\usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage[protrusion=true,factor=900]{microtype}
+% \usepackage{enumitem}
+% \usepackage[pdftex]{graphicx}
+% \usepackage{todonotes}
+% \usepackage{dingbat,bbding} %% special characters
+% \definecolor{DispositionColor}{RGB}{30,103,182}
+
+% \usepackage[backend=biber,style=authoryear,dashed=false,natbib=true,hyperref=true%%
+% ]{biblatex}
+
+% \addbibresource{references-biblatex.bib} %% remove, if using BibTeX instead of biblatex
+
+% %% overriding userdata %%
+% \newcommand{\THSinsertauthor}{Karl Voit}
+% \newcommand{\THSinserttitle}{LaTeX Template Documentation}
+% \newcommand{\THSinsertsubject}{A Comprehensive Guide to Use the
+% Template from https://github.com/tquaritsch/LaTeX-KOMA-template}
+% \newcommand{\THSinsertkeywords}{LaTeX, pdflatex, template, documentation, biber, biblatex}
+
+% \newcommand{\myLaT}{\LaTeX{}@TUG\xspace}
+
+% %% for future use?
+% % \usepackage{filecontents}
+% % \begin{filecontents}{filename.example}
+% % 
+% % \end{filecontents}
+
+
+% %% using existing TeX files %%
+% \input{template/mycommands}
+% \input{template/typographic_settings}
+% \input{template/pdf_settings}
+% \makeatother
+% \begin{document}
+% %% title page %%
+% \title{\THSinserttitle}\subtitle{\THSinsertsubject}
+% \author{\THSinsertauthor}
+% \date{\today}
+
+% \maketitle\newpage
+
+% \tableofcontents\newpage
+
+\documentclass[
+	baseclass=scrartcl,
+	biber,
+	titlepage=plain_maketitle,
+	addcolophon=false,
+	addabstract=false,
+	adddeclaration=false,
+	addlistoffigures=false,
+	laterality=oneside
+]{tugthesis}
+
+\THSauthor{Karl Voit}
+\THStitle{LaTeX Template Documentation}
+\THSsubject{{A Comprehensive Guide to Use the Template from https://github.com/tquaritsch/LaTeX-KOMA-template}}
+\THSkeywords{LaTeX, pdflatex, template, documentation, biber, biblatex}
+
+\usepackage{dingbat,bbding}
+\usepackage{eurosym}
+\newcommand{\myimportant}{%% mark important chapters
+  \marginpar{\vspace{-1em}\rightpointleft}
+}
+\newcommand{\myinteresting}{\marginpar{\vspace{-2em}\PencilLeftDown}}
+
+\begin{document}
+
+%%---------------------------------------%%
+
+
+\section{How to use this \LaTeX{} document template}
+
+This \LaTeX{} document template from
+\THSmyLaT\footnote{\url{http://LaTeX.TUGraz.at}} is based on \myacro{KOMA}
+script\footnote{\url{http://komascript.de/}}. You don't need any
+special \myacro{KOMA} knowledge (but it won't hurt either). It provides an easy to use and
+easy to modify template. All settings are documented and many references to
+additional information sources are given.
+
+
+In general, there should not be any reason to modify a file in
+the \texttt{template} folder. \emph{All important settings are
+accessible in the main folder, mostly in the \texttt{main.tex}
+file.} This way, it is easy to get what you need and you can update
+the template independent of the content of the document.
+
+
+
+
+The \emph{absolute minimum you should read} is listed below and 
+marked with the hand symbol:\myimportant
+\begin{itemize}
+\item Section~\ref{sec:modifytemplate}: basic configuration of this template.
+\item Section~\ref{sec:howtocompile}: how to generate the \myacro{PDF} file
+\item Section~\ref{sec:references}: using biblatex (instead of bibtex)
+\end{itemize}
+
+In order to get a perfect resulting document and to get an
+exciting experience with this template, you should definitely consider reading
+following sections which are also marked with the pencil symbol:\myinteresting
+\begin{itemize}
+\item Section~\ref{sec:extending-template}: extend the template with
+  your own usepackages, newcommands, and so forth
+\item Section~\ref{sec:mycommands}: pre-defined commands to make your life easier (e.g., including graphics)
+\item Section~\ref{sec:myacro}: how to do acronyms (like \myacro{ACME}) beautifully
+\item Section~\ref{sub:csquotes}: how to \enquote{quote} text and use parentheses correctly
+\end{itemize}
+
+The other sections describe all other settings for the sake of completeness. This is
+interesting for learning more about \LaTeX{} and modifying this template to a higher level of detail.
+
+
+\newpage
+\subsection{Six Steps to Customize Your Document}\myimportant
+\label{sec:modifytemplate}
+
+This template is optimized to get to the first draft of your thesis
+very quickly. Follow these instructions and you get most of your
+customizing done in a few minutes:
+
+\newcommand{\myfile}[1]{\texttt{\href{file:#1}{#1}}}
+
+\begin{enumerate}
+\item Modify settings in \texttt{main.tex} to meet your requirements:
+  \begin{itemize}
+  \item Basic settings
+    \begin{itemize}
+    \item Paper size, languages, font size, citation style,
+          title page, and so forth
+    \end{itemize}
+  \item Document metadata
+    \begin{itemize}
+    \item Preferences like \verb+myauthor+, \verb+mytitle+, and so forth
+    \end{itemize}
+  \end{itemize}
+\item Replace \myfile{figures/institution.pdf} with the logo of
+your institution in either \myacro{PDF} or \myacro{PNG}
+format.\footnote{Avoid \myacro{JPEG} format for
+computer-generated (pixcel-oriented) graphics like logos or
+screenshots in general. The \myacro{JEPG} format is for
+photographs \emph{only}.}
+\item Further down in \myfile{main.tex}:
+  \begin{itemize}
+  \item Create your desired structure for the chapters
+        (\verb+\include{introduction}+, \verb+\include{evaluation}+, \ldots)
+  \end{itemize}
+\item Create the \TeX{} files and fill your content into these files you defined in the previous step.
+\item Optionally: Modify \myfile{colophon.tex} to meet your situation.
+  \begin{itemize}
+  \item Please spend a couple of minutes and think about putting your work
+        under an open license\footnote{\url{https://creativecommons.org/licenses/}}
+        in order to follow the spirit of Open Science\footnote{\url{https://en.wikipedia.org/wiki/Open_science}}.
+  \end{itemize}
+\item In case you are using \myacro{GNU} make\footnote{If you
+      don't know, what \myacro{GNU} make is, you are not using it (yet).}: 
+      Put your desired \myacro{PDF} file name in the second line of file
+   \myfile{Makefile}
+   \begin{itemize}
+   \item replace \enquote{Projectname} with your filename
+   \item do not use any file extension like \texttt{.tex} or \texttt{.pdf}
+   \end{itemize}
+\end{enumerate}
+
+
+
+
+\subsection{License}
+\label{sec:license}
+
+This template is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+        license\footnote{\url{https://creativecommons.org/licenses/by-sa/3.0/}}:
+    \begin{itemize}
+    \item You can share (to copy, distribute and transmit) this template.
+    \item You can remix (adapt) this template.
+    \item You can make commercial use of the template.
+    \item In case you modify this template and share the derived
+          template: You must attribute the template such that you do not
+          remove \mbox{(co-)}authorship of Karl Voit and you must not remove
+          the URL to the original repository on 
+          github\footnote{\url{https://github.com/novoid/LaTeX-KOMA-template}}.
+    \item If you alter, transform, or build a new template upon 
+          this template, you may distribute the resulting 
+          template only under the same or similar license to this one. 
+    \item There are \emph{no restrictions} of any kind, however, related to the
+          resulting (PDF) document!
+    \item You may remove the colophon (but it's not recommended).
+    \end{itemize}
+
+
+
+
+\subsection{How to compile this document}\myimportant
+\label{sec:howtocompile}
+
+I assume that compiling \LaTeX{} documents within your software
+environment is something you have already learned. This template is
+almost like any other \LaTeX{} document except it uses
+state-of-the-art tools for generating things like the list of
+references using biblatex/biber (see
+Section~\ref{sec:references} for details). Unfortunately, some \LaTeX{} editors
+do not support this much better way of working with bibliography
+references yet. This section describes how to compile this template.
+
+\subsubsection{Compiling Using a \LaTeX{} Editor}
+
+Please do select \myfile{main.tex} as the \enquote{main project file} or make
+sure to compile/run only \myfile{main.tex} (and not \myfile{introduction.tex}
+or other \TeX{} files of this template).
+
+Choose \texttt{biber} for generating the references. Modern LaTeX{}
+environments offer this option. Older tools might not be that up-to-date
+yet.
+
+
+\subsubsection{Activating \texttt{biber} in the \LaTeX{} editor TeXworks}
+\label{sec:biberTeXworks}
+
+The \href{https://www.tug.org/texworks/}{TeXworks} editor is a very
+basic (but fine) \LaTeX{} editor to start with. It is included in
+\href{http://miktex.org/}{MiKTeX} and
+\href{http://miktex.org/portable}{MiKTeX portable} and supports
+\href{https://en.wikipedia.org/wiki/Syntax_highlighting}{syntax
+  highlighting} and
+\href{http://itexmac.sourceforge.net/SyncTeX.html}{SyncTeX} to
+synchronize \myacro{PDF} output and \LaTeX{} source code.
+
+Unfortunately, TeXworks shipped with MiKTeX does not support compiling
+using \texttt{biber} (biblatex) out of the box. Here is a solution to
+this issue. Go to TeXworks: \texttt{Edit} $\rightarrow$
+\texttt{Preferences~\ldots} $\rightarrow$ \texttt{Typesetting} $\rightarrow$
+\texttt{Processing tools} and add a new entry (using the plus icon):
+
+\begin{tabbing}
+  Arguments: \= foobar  \kill
+  Name:      \> \verb#pdflatex+biber# \\
+  Program:   \> \emph{find the \texttt{template/pdflatex+biber.bat} file from your disk} \\
+  Arguments: \> \verb+$fullname+ \\
+             \> \verb+$basename+
+\end{tabbing}
+
+Activate the \enquote{View PDF after running} option.
+
+Close the preferences dialog and you will now have an additional
+choice in the drop down list for compiling your document. Choose the
+new entry called \verb#pdflatex+biber# and start a happier life with
+\texttt{biber}.
+
+In case your TeXworks has a German user interface, here the key
+aspects in German as well:
+
+\begin{otherlanguage}{ngerman}
+
+  \texttt{Bearbeiten} $\rightarrow$ \texttt{Einstellungen~\ldots} $\rightarrow$
+  \texttt{Textsatz} $\rightarrow$ \texttt{Verarbeitungsprogramme} $\rightarrow$
+  + \emph{(neues Verarbeitungsprogramm)}:
+
+\begin{tabbing}
+  Befehl/Datei: \= foobar  \kill
+    Name: \> pdflatex+biber \\
+    Befehl/Datei: \> \emph{die \texttt{template/pdflatex+biber.bat} im Laufwerk suchen} \\
+    Argumente: \> \verb+$fullname+ \\
+               \> \verb+$basename+
+\end{tabbing}
+
+\enquote{PDF nach Beendigung anzeigen} aktivieren.
+
+\end{otherlanguage}
+
+
+\subsubsection{Compiling Using \myacro{GNU} make}
+
+With \myacro{GNU}
+make\footnote{\url{https://secure.wikimedia.org/wikipedia/en/wiki/Make\_\%28software\%29}}
+it is just simple as that: \texttt{make pdf}
+
+Several other targets are available. You can check them out by
+executing: \texttt{make help}
+
+
+\subsubsection{Compiling in a Text-Shell}
+
+To generate a document using \texttt{Biber}, you can stick to
+following example:
+\begin{verbatim}
+pdflatex main.tex
+biber main
+pdflatex main.tex
+pdflatex main.tex
+\end{verbatim}
+
+
+
+
+\subsection{How to get rid of the template documentation}
+
+Simply remove the files \verb#Template_Documentation.pdf# and 
+(if it exists)  \verb#Template_Documentation.tex# in the main folder 
+of this template.
+
+\subsection{What about modifying or extending the template?}\myinteresting
+\label{sec:extending-template}
+
+This template provides an easy to start \LaTeX{} document template with sound
+default settings. You can modify each setting any time. It is recommended that
+you are familiar with the documentation of the command whose settings you want
+to modify.
+
+It is recommended that for \emph{adding} things to the preamble (newcommands,
+setting variables, defining headers, \dots) you should use the file
+\texttt{main.tex}. 
+There are comment lines which help you find the right spot.
+This way you still have the chance to update your \texttt{template}
+folder from the template repository without losing your own added things.
+
+The following sections describe the settings and commands of this template and
+give a short overview of its features.
+
+\subsection{How to change the title page}
+
+This template comes with a variety of title pages. They are located in
+the folder \texttt{template}. You can switch to a specific title
+page by including the corresponding title page file in the file
+\texttt{main.tex}.
+
+Please note that you may not need to modify any title page document by
+yourself since all relevant information is defined in the file
+\texttt{main.tex}.

@@ -93,10 +93,13 @@ publish: templatedocu pdf clean
 #help			needs: echo, sed, grep
 .PHONY: templatedocu
 templatedocu:
-	grep "%doc%" template/preamble.tex | sed 's/^.*%doc% //' > ${TEMPLATEDOCUFILE}
-	grep "%doc%" template/mycommands.tex | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
-	grep "%doc%" template/typographic_settings.tex | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
-	grep "%doc%" template/pdf_settings.tex | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
+	# grep "%doc%" template/templatedoc.tex | sed 's/^.*%doc% //' > ${TEMPLATEDOCUFILE}
+	cat template/templatedoc.tex > ${TEMPLATEDOCUFILE}
+	grep "%doc%" tugthesis.cls | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
+	grep "%doc%" template/tugthesis-packages.sty | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
+	grep "%doc%" template/tugthesis-commands.sty | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
+	grep "%doc%" template/tugthesis-typography.sty | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
+	grep "%doc%" template/tugthesis-pdfoptions.sty | sed 's/^.*%doc% //' >> ${TEMPLATEDOCUFILE}
 	echo "%%---------------------------------------%%" >>${TEMPLATEDOCUFILE}
 	echo "\printbibliography\end{document}" >>${TEMPLATEDOCUFILE}
 	${PDFLATEX_CMD} ${TEMPLATEDOCUFILE}

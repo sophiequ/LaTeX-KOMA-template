@@ -13,6 +13,7 @@
 	prefix=THS@
 }
 
+\DeclareStringOption[scrbook]{baseclass}
 \DeclareStringOption[A4]{papersize}
 \DeclareStringOption[twoside]{laterality}
 \DeclareStringOption[false]{draft}
@@ -31,8 +32,11 @@
 \DeclareStringOption{todonotesoptions}
 \DeclareStringOption[alpha]{bibtexstyle}
 \DeclareBoolOption[true]{addcolophon}
+\DeclareBoolOption[true]{addabstract}
+\DeclareBoolOption[true]{adddeclaration}
+\DeclareBoolOption[true]{addlistoffigures}
 \DeclareBoolOption[false]{addlistoftodos}
-\DeclareBoolOption{biblatex}
+\DeclareBoolOption[true]{biblatex}
 \DeclareComplementaryOption{bibtex}{biblatex}
 
 \newboolean{THSaddcolophon}
@@ -67,10 +71,17 @@
 	                     %% the resulting printout.
 	\THS@laterality        %% oneside: document is not printed on left and right sides, only right side
 	                     %% twoside: document is printed on left and right sides
-}{scrbook}
+}{\THS@baseclass}
 
-\LoadClass{scrbook}
+\LoadClass{\THS@baseclass}
 
+% FIXXME: adopting class usage:
+% from scrbook -> scrartcl OR scrreport:
+% - remove appendixprefix from class options
+% - remove \frontmatter \mainmatter \backmatter \appendix from main.tex
+
+% FIXXME: adopting language:
+% add or modify language parameter of package »babel« and use language switches described in babel-documentation
 
 \def\THScolorlinks{\THS@colorlinks}
 \def\THSbibfile{\THS@bibfile}
@@ -158,7 +169,6 @@
 \newcommand{\THSlecture}[1]{\def\THSinsertlecture{#1}}
 
 
-\input{template/preamble.tex}
 
 \newcommand{\THSinsertbibliography}{
 		\ifthenelse{\boolean{THSusebiblatex}}{
@@ -170,54 +180,69 @@
 }
 
 
-%% ========================================================================
-%%%% MISC command definitions
-%% ========================================================================
-\input{template/mycommands}
+\RequirePackage{template/tugthesis-packages}
+\RequirePackage{template/tugthesis-commands}
+\RequirePackage{template/tugthesis-typography}
+\RequirePackage{template/tugthesis-pdfoptions}
 
-%% ========================================================================
-%%%% Typographic settings
-%% ========================================================================
-\input{template/typographic_settings}
+\newcommand{\THSmyLaT}{\LaTeX{}@TU\,Graz\xspace} %% LaTeX@TUG text "logo"
 
-
-\newcommand{\THSmyLaT}{\LaTeX{}@TUG\xspace} %% LaTeX@TUG text "logo"
+%doc% \section{\texttt{tugthesis.cls} -- Basic Class File}
+%doc% 
+%doc% The file \texttt{tugthesis.cls} defines the commands
+%doc% for meta information, e.g. \texttt{\\THSauthor\{\ldots\}},
+%doc% \texttt{\\THStitle\{\ldots\}}, \ldots and class options 
+%doc% like \texttt{fontsize=12pt}. You can modify or complement those definitions 
+%doc% easily by mimicking the existing ones. The class file also defines the order 
+%doc% of the docment elements at the beginning (colophon, title page, statutory 
+%doc% declaration, \ldots) in the \texttt{AtBeginDocument} command at the end of the 
+%doc% file. The files in the \texttt{template} directory are included from 
+%doc% \texttt{tugthesis.cls}.
 
 
 \AtBeginDocument{
-	
-		\input{template/pdf_settings}  %% should be *last* definitions in preamble!
 
-
-		\frontmatter                    %% KOMA: roman page numbers and such; only available in scrbook
+		\ifthenelse{\equal{\THS@baseclass}{scrbook}} {
+			\frontmatter                    %% KOMA: roman page numbers and such; only available in scrbook
+		}{}
 
 		\input{colophon}                %% defines information about editor, LaTeX, font, ...
 
 		%% Choose your desired title page:
-		\input{template/title_\THS@titlepage}            %% include title page
+		\input{template/titlepages/\THS@titlepage}            %% include title page
 
+		\ifTHS@adddeclaration
+			\input{template/declaration_TU_Graz}  %% Statutory Declaration
+		\fi
 
-		\input{template/declaration_TU_Graz}  %% Statutory Declaration
 		% \input{thanks}                %% this is a suggestion: you have to create this file on demand
 		% \input{foreword}              %% this is a suggestion: you have to create this file on demand
 
 
-		%% include the abstract without chapter number but include it on table of contents:
-		\cleardoublepage
-		\addcontentsline{toc}{chapter}{Abstract}
-		\include{abstract}              %% Abstract
+		\ifTHS@addabstract
+			%% include the abstract without chapter number but include it on table of contents:
+			\cleardoublepage
+			\addcontentsline{toc}{chapter}{Abstract}
+			\include{abstract}              %% Abstract
+		\fi
 
 
 		\tableofcontents                %% this produces the table of contents - you might have guessed :-)
+		\clearpage
 
-		\listoffigures
+		\ifTHS@addlistoffigures
+			\listoffigures
+			\clearpage
+		\fi
 
 		%% if myaddlistoftodos is set to "true", the current list of open todos is added:
 		\ifTHS@addlistoftodos
 		  \newpage\listoftodos          %% handy if you are using todonotes with \todo{}
 		\fi                             %% with todonotes-package option "disable" you can get rid of any todo in the output
 
-		\mainmatter                     %% KOMA: marks main part using arabic page numbers and such; only available in scrbook
+		\ifthenelse{\equal{\THS@baseclass}{scrbook}} {
+			\mainmatter                     %% KOMA: marks main part using arabic page numbers and such; only available in scrbook
+		}
 
 
 }
